@@ -1,0 +1,4 @@
+Django
+pymysql
+django-bootstrap-v5
+django-browser-reload

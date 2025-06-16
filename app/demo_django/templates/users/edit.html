@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+    Edit users
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h1 class="mt-4 mb-4 text-center">Create users</h1>
+        <form action="{% url 'users.update' id=user.id %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">Name: </label>
+                <input type="text" name="name" id="name" class="form-control" value="{{ user.name }}">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email: </label>
+                <input type="email" name="email" id="email" class="form-control" value="{{ user.email }}">
+            </div>
+            <div class="gap-2">
+                <a href="{% url 'users.index' %}" class="btn btn-success">List users</a>
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
