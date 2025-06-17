@@ -16,6 +16,14 @@
                 <label for="email" class="form-label">Email: </label>
                 <input type="email" name="email" id="email" class="form-control" value="{{ user.email }}">
             </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Address: </label>
+                <input type="text" name="address" id="address" class="form-control" value="{{ user.address }}">
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone: </label>
+                <input type="number" name="phone" id="phone" class="form-control" value="{{ user.phone }}">
+            </div>
             <div class="gap-2">
                 <a href="{% url 'users.index' %}" class="btn btn-success">List users</a>
                 <button type="submit" class="btn btn-primary">Edit</button>
