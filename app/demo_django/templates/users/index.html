@@ -4,15 +4,24 @@
 {% endblock %}
 
 {% block content %}
-    <div class="content">
-        <h1 class="mt-4 mb-4 text-center">List users</h1>
-        <a href="{% url 'users.create' %}" class="btn btn-primary mb-2">Create</a>
+<h1 class="mt-4 mb-4 text-center">List users</h1>
+<div class="content">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{message.tags}}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'users.create' %}" class="btn btn-primary mb-2">Create</a>
         <table class="table table-bordered table-responsive border text-center">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Address</th>
+                    <th>Phone</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -22,6 +31,8 @@
                     <td>{{ user.id }}</td>
                     <td>{{ user.name }}</td>
                     <td>{{ user.email }}</td>
+                    <td>{{ user.address }}</td>
+                    <td>{{ user.phone }}</td>
                     <td>
                         <div class="d-flex gap-2 justify-content-center">
                             <a href="{% url 'users.edit' id=user.id %}" class="btn btn-warning">Edit</a>

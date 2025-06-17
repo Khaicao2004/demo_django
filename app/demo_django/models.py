@@ -2,9 +2,10 @@ from django.db import models
 
 # Create your models here.
 class Users(models.Model):
-    name = models.CharField(max_length=20)
-    email = models.EmailField(max_length=30)
-    password = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=255, unique=True)
+    address = models.CharField(max_length=255)
+    phone = models.IntegerField(max_length=11, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
