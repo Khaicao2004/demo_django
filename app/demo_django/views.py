@@ -19,7 +19,7 @@ def store_users(request):
         return redirect('users.index')
 
 def edit_users(request, id): 
-    user = Users.objects.filter(id=id).first()
+    user = Users.objects.get(id=id)
     return render(request, 'users/edit.html', {
         'user': user
     })
@@ -28,7 +28,7 @@ def update_users(request, id):
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
-        Users.objects.filter(id=id).update(name=name,email=email)
+        Users.objects.get(id=id).update(name=name,email=email)
     return redirect('users.index')
 
 def delete_users(request, id):
