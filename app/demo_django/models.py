@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Users(models.Model):
+class User(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=255, unique=True)
     address = models.CharField(max_length=255)
@@ -9,8 +9,8 @@ class Users(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-class Books(models.Model):
-    user_id = models.ForeignKey(Users, on_delete=models.CASCADE)
+class Book(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=20)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
