@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+    List books
+{% endblock %}
+
+{% block content %}
+<h1 class="mt-4 mb-4 text-center">List books</h1>
+<div class="content">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{message.tags}}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <a href="" class="btn btn-primary mb-2">Create</a>
+        <table class="table table-bordered table-responsive border text-center">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.user.name }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.content }}</td>
+                    <td>
+                        <div class="d-flex gap-2 justify-content-center">
+                            <a href="" class="btn btn-warning">Edit</a>
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
