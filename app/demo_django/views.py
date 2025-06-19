@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import User
+from .models import User, Book
 from django.contrib import messages
 
 
@@ -49,3 +49,8 @@ def delete_users(request, id):
     else:
         messages.error(request, 'Xoá bản ghi thất bại')
     return redirect('users.index')
+
+
+def index_books(request):
+    books = Book.objects.select_related("user").all()
+    return render(request, "books/index.html",{"books": books})
