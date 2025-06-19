@@ -10,7 +10,7 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Book(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="user",on_delete=models.CASCADE)
     title = models.CharField(max_length=20)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
